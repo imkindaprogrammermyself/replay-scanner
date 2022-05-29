@@ -51,7 +51,7 @@ if __name__ == '__main__':
                 except (EOFError, ValueError, pickle.UnpicklingError):
                     suspected_size_b, = struct.unpack('H', data[position - 3:position - 1])
                     try:
-                        print(RestrictedUnpickler(BytesIO(data[position:position + suspected_size_b])).load())
+                        RestrictedUnpickler(BytesIO(data[position:position + suspected_size_b])).load()
                     except (EOFError, ValueError, pickle.UnpicklingError):
                         pass
             except ForbiddenImportError as e:
